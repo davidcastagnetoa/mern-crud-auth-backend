@@ -14,8 +14,8 @@ const corsOptions = {
   credentials: true,
   allowedHeaders: "Content-Type, Authorization",
 };
-
 app.use(cors(corsOptions));
+
 // 2. Logging de solicitudes
 app.use(morgan("dev"));
 
