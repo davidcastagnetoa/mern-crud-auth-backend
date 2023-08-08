@@ -7,6 +7,7 @@ import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
+// 1. Configurar CORS
 const corsOptions = {
   origin: "https://mern-crud-auth.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -14,12 +15,15 @@ const corsOptions = {
   allowedHeaders: "Content-Type, Authorization",
 };
 
-app.use(express.json());
 app.use(cors(corsOptions));
-
+// 2. Logging de solicitudes
 app.use(morgan("dev"));
+
+// 3. Parsear el cuerpo y las cookies de las solicitudes
+app.use(express.json());
 app.use(cookieParser());
 
+// 4. Manejar rutas específicas
 app.use(authRoutes);
 app.use(taskRoutes);
 
