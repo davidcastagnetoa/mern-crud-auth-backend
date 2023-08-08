@@ -7,10 +7,10 @@ import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
-const whitelist = [
-  "https://mern-crud-auth.vercel.app",
-  "http://localhost:5173",
-];
+// const whitelist = [
+//   "https://mern-crud-auth.vercel.app",
+//   "http://localhost:5173",
+// ];
 // const corsOptions = {
 //   origin: function (origin, callback) {
 //     if (whitelist.indexOf(origin) !== -1) {
@@ -25,13 +25,15 @@ const whitelist = [
 
 // app.use(cors(corsOptions));
 
-app.use(
-  cors({
-    origin: whitelist,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: whitelist,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   })
+// );
+
+app.use(cors());
 
 // app.use(
 //   cors({
