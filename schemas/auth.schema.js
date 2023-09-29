@@ -1,8 +1,4 @@
-// import { z } from "zod";
-
-// import { z } from "zod/lib/index.js"
-// import { z } from "zod/lib/index.mjs";
-import { z } from "zod/index.d.ts";
+import { z } from "zod";
 
 // prettier-ignore
 export const registerSchema = z.object({
