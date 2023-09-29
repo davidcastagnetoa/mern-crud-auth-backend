@@ -21,7 +21,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.3",
     "morgan": "^1.10.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
