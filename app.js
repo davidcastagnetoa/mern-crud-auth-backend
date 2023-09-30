@@ -7,57 +7,28 @@ import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
-// 1. Configurar CORS
-const corsOptions = {
-  origin: "https://mern-crud-auth.vercel.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  allowedHeaders: "Content-Type, Authorization",
-};
-app.use(cors(corsOptions));
+const whitelist = ["https://mern-crud-auth.vercel.app", "http://localhost:5173"];
 
-// 2. Logging de solicitudes
+// Middleware personalizado para configurar CORS basado en la lista blanca
+app.use((req, res, next) => {
+  const origin = req.get("origin");
+  console.log(origin);
+
+  if (whitelist.indexOf(origin) !== -1) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  }
+
+  next();
+});
+
 app.use(morgan("dev"));
-
-// 3. Parsear el cuerpo y las cookies de las solicitudes
 app.use(express.json());
 app.use(cookieParser());
 
-// 4. Manejar rutas específicas
 app.use(authRoutes);
 app.use(taskRoutes);
 
 export default app;
-
-// const whitelist = [
-//   "https://mern-crud-auth.vercel.app",
-//   "http://localhost:5173",
-// ];
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-// };
-
-// app.use(cors(corsOptions));
-
-// app.use(
-//   cors({
-//     origin: whitelist,
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   })
-// );
-
-// app.use(
-//   cors({
-//     origin: "*",
-//     credentials: true,
-//   })
-// );
