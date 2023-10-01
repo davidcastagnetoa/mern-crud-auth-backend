@@ -1,15 +1,15 @@
-import { z } from "zod";
+import * as yup from "yup";
 
-export const createTaskSchema = z.object({
-  title: z
-    .string({
-      required_error: "Title is required",
-    })
-    .min(1),
-  description: z.string({
-    required_error: "Description is required",
-    invalid_type_error: "Description must be a string",
-    min_length: 1,
-  }),
-  date: z.string().datetime().optional(),
+export const createTaskSchema = yup.object().shape({
+  title: yup
+    .string()
+    .required("Title is required")
+    .min(1, "Title must be at least 1 character long"),
+
+  description: yup
+    .string()
+    .required("Description is required")
+    .min(1, "Description must be at least 1 character long"),
+
+  date: yup.date().nullable(true).notRequired(),
 });

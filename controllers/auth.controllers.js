@@ -34,7 +34,6 @@ export const register = async (req, res) => {
 
     // Creas el token (payload)
     const token = await createAccessToken({ id: userSaved._id });
-    console.log("El token creado es : ", token);
 
     // Estableces en una cookie la respuesta
     res.cookie("token", token, {
@@ -76,7 +75,6 @@ export const login = async (req, res) => {
       id: userFound._id,
       username: userFound.username,
     });
-    console.log("El token creado es :", token);
 
     // Estableces en una cookie la respuesta
     res.cookie("token", token, {
@@ -122,8 +120,6 @@ export const profile = async (req, res) => {
 export const verifyToken = async (req, res) => {
   // Obtiene el token de las cookies
   const { token } = req.cookies;
-  console.log(`EL token obtenido de las cookies en req.cookies, auth.controller.js es : ${token}`);
-
   if (!token) {
     console.log("Unauthorized, No token");
     return res.status(401).json({ message: "Unauthorized, No token" });

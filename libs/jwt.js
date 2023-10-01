@@ -6,23 +6,6 @@ import { TOKEN_SECRET } from "../config.js";
 
 import jwt from "jsonwebtoken";
 
-// export function createAccessToken(payload) {
-//   console.log(process.env.TOKEN_SECRET);
-//   return new Promise((resolve, reject) => {
-//     jwt.sign(
-//       payload,
-//       process.env.TOKEN_SECRET,
-//       {
-//         expiresIn: "1d",
-//       },
-//       (error, token) => {
-//         if (error) reject(error);
-//         resolve(token);
-//       }
-//     );
-//   });
-// }
-
 export function createAccessToken(payload) {
   return new Promise((resolve, reject) => {
     console.log(TOKEN_SECRET);
