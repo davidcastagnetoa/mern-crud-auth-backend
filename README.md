@@ -22,9 +22,8 @@ A Node.js backend application for managing tasks. Users can register, log in, lo
 1. **Clone the Repository**
 
    ```bash
-   git clone [repository_url]
-   cd [repository_name]
-
+   git clone https://github.com/davidcastagnetoa/mern-crud-auth-backend.git
+   cd mern-crud-auth-backend
    ```
 
 2. **Install Dependencies**
@@ -36,19 +35,46 @@ A Node.js backend application for managing tasks. Users can register, log in, lo
 
 3. **Set Up Environment Variables**
 
-   - Create a `.env` file in the root directory of your project.
+   - Create a `.env` file in the root directory of your project. Check .env_template file
+   - Go to mongodb account, login and create a project
+   - Navigate to your created project, create New Cluster
    - Define the required environment variables:
 
    ```bash
-   MONGODB_URI=your_mongodb_connection_string
+   MONGODB_URI=mongodb+srv://<your_username>:<your_password>mern-users.nwszua8.mongodb.net
    TOKEN_SECRET=your_jwt_secret_key
-
    ```
 
 4. **Running the Server**
+
    ```bash
    npm start
    ```
+
+## Deploying
+
+If you wish to run it in another server for example in vercel. this is the steps:
+
+## Vercel server
+
+1. **Install vercel CLI**
+
+```bash
+npm i -g vercel
+# yarn global add vercel ---if using yarn instead of npm
+```
+
+2. **Updating Vercel CLI**
+
+```bash
+npm i -g vercel@latest
+```
+
+3. **Deploy with Vercel** (you can use `vercel login`)
+
+```bash
+cd mern-crud-auth-backend && vercel deploy --prod # or just "vercel" without "--prod".
+```
 
 ## API Endpoints
 
@@ -74,6 +100,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Credits
 
-This application is based on the video tutorial created by **fazt**. All credits for the original content and tutorial go to him.
+This application is based on the video tutorial created by [fazt](https://www.faztweb.com/). All credits for the original content and tutorial go to him.
 
 🎥 [Watch the tutorial on YouTube](https://youtu.be/NmkY4JgS21A)
