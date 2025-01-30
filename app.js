@@ -7,7 +7,7 @@ import taskRoutes from "./routes/task.routes.js";
 
 const app = express();
 
-const whitelist = ["https://mern-crud-auth.vercel.app", "http://localhost:5173"];
+const whitelist = ["https://mern-crud-auth.vercel.app", "http://localhost:5173", "https://backend-eta-six.vercel.app/"];
 
 // Middleware personalizado para configurar CORS basado en la lista blanca
 app.use((req, res, next) => {
